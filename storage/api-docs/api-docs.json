@@ -1,0 +1,358 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Usu\u00e1rios",
+        "contact": {
+            "email": "rychardhiago@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/usuarios": {
+            "get": {
+                "summary": "usuarios",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "token obtido pela autentica\u00e7\u00e3o",
+                        "required": true,
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsdW1lbi1qd3QiLCJzdWIiOjIsImlhdCI6MTU4NzI0MTQ3NSwiZXhwIjoxNTg3MjQ1MDc1fQ.KU79YEEMGY9TnutnnvbTxHTT3RdJKZCmoXsG8RzMHPM"
+                            }
+                        },
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um array com os dados",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "id": 2,
+                                "email": "teste@gmail.com",
+                                "nome": "Teste usuario",
+                                "data_cadastro": {
+                                    "date": "2020-04-18 15:38:45.000000",
+                                    "timezone_type": 3,
+                                    "timezone": "America/Sao_Paulo"
+                                },
+                                "data_ult_alt": null
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token inv\u00e1lido"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/{id}": {
+            "get": {
+                "summary": "usuario/{id}",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id do usu\u00e1rio procurado",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "token obtido pela autentica\u00e7\u00e3o",
+                        "required": true,
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsdW1lbi1qd3QiLCJzdWIiOjIsImlhdCI6MTU4NzI0MTQ3NSwiZXhwIjoxNTg3MjQ1MDc1fQ.KU79YEEMGY9TnutnnvbTxHTT3RdJKZCmoXsG8RzMHPM"
+                            }
+                        },
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um array com os dados",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "id": 2,
+                                "email": "teste@gmail.com",
+                                "nome": "Teste usuario",
+                                "data_cadastro": {
+                                    "date": "2020-04-18 15:38:45.000000",
+                                    "timezone_type": 3,
+                                    "timezone": "America/Sao_Paulo"
+                                },
+                                "data_ult_alt": null
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token inv\u00e1lido"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "usuario/{id}",
+                "parameters": [
+                    {
+                        "name": "dados",
+                        "in": "query",
+                        "description": "json com os dados para serem alterados e com o token. Este m\u00e9todo possui valida\u00e7\u00f5es a cerca dos valores inseridos.",
+                        "required": true,
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "nome": "Rychard Hiago",
+                                "email": "rychardhiago@gmail.com",
+                                "senha": "A1abcdef@222",
+                                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsdW1lbi1qd3QiLCJzdWIiOjIsImlhdCI6MTU4NzI0MTQ3NSwiZXhwIjoxNTg3MjQ1MDc1fQ.KU79YEEMGY9TnutnnvbTxHTT3RdJKZCmoXsG8RzMHPM"
+                            }
+                        },
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso na execu\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": true,
+                                "mensagem": "Comando executado com sucesso."
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token inv\u00e1lido"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token expirado"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "usuario/{id}",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id do usu\u00e1rio procurado",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "token obtido pela autentica\u00e7\u00e3o",
+                        "required": true,
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsdW1lbi1qd3QiLCJzdWIiOjIsImlhdCI6MTU4NzI0MTQ3NSwiZXhwIjoxNTg3MjQ1MDc1fQ.KU79YEEMGY9TnutnnvbTxHTT3RdJKZCmoXsG8RzMHPM"
+                            }
+                        },
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso na execu\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": true,
+                                "mensagem": "Comando executado com sucesso."
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token inv\u00e1lido"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token expirado"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario": {
+            "post": {
+                "summary": "usuario",
+                "parameters": [
+                    {
+                        "name": "dados",
+                        "in": "query",
+                        "description": "json com os dados para serem inseridos e com o token. Este m\u00e9todo possui valida\u00e7\u00f5es a cerca dos valores inseridos.",
+                        "required": true,
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "nome": "Rychard Hiago",
+                                "email": "rychardhiago@gmail.com",
+                                "senha": "A1abcdef@222",
+                                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsdW1lbi1qd3QiLCJzdWIiOjIsImlhdCI6MTU4NzI0MTQ3NSwiZXhwIjoxNTg3MjQ1MDc1fQ.KU79YEEMGY9TnutnnvbTxHTT3RdJKZCmoXsG8RzMHPM"
+                            }
+                        },
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso na execu\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": true,
+                                "mensagem": "Comando executado com sucesso."
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token inv\u00e1lido"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Token expirado"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "summary": "auth/login",
+                "parameters": [
+                    {
+                        "name": "dados",
+                        "in": "query",
+                        "description": "json com os dados para login.",
+                        "required": true,
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "email": "rychardhiago@gmail.com",
+                                "senha": "A1abcdef@222"
+                            }
+                        },
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso na execu\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": true,
+                                "mensagem": "Comando executado com sucesso.",
+                                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsdW1lbi1qd3QiLCJzdWIiOjIsImlhdCI6MTU4NzI0MTQ3NSwiZXhwIjoxNTg3MjQ1MDc1fQ.KU79YEEMGY9TnutnnvbTxHTT3RdJKZCmoXsG8RzMHPM"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Retorna uma mensagem de valida\u00e7\u00e3o",
+                        "schema": {
+                            "property": "result",
+                            "type": "json",
+                            "example": {
+                                "retorno": false,
+                                "mensagem": "Ocorreu um erro na sua requisi\u00e7\u00e3o. Erro original: Email n\u00e3o encontrado"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
